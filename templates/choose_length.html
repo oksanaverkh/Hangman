@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Форма выбора игроком максимальной длины слова -->
+
+<p class="text">Выбери максимальную длину слова</p>
+<form method="POST" action="{{ url_for('choose_length') }}" class="form-example">
+    <div class="form-example">
+        {{ form.csrf_token }}
+        <p>{{ form.word_length }} <input type="submit" value="Выбрать"></p>
+    </div>
+</form>
+
+{% endblock content %}

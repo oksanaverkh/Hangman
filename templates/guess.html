@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Вывод количества оставшихся попыток игрока -->
+
+<div class="container m-3">
+    <p>У тебя осталось {{ tries }}
+        {% if tries >=5 %}
+        попыток
+        {% elif tries==1 %}
+        попытка
+        {% else %}
+        попытки
+        {% endif %}
+    </p>
+
+    <!-- Вывод слова с угаданными игроком буквами -->
+
+    {% for ch in word_to_display %}
+    <span>{{ch}} </span>
+    {% endfor %}
+
+    <p>Укажи букву</p>
+
+    <!-- Форма выбора буквы игроком -->
+
+    <form method=post class="form-example">
+        <div class="form-example">
+            <input type="text" name="letter" placeholder="буква">
+        </div>
+        <div class="form-example">
+            <input type="submit" value="Угадать">
+        </div>
+    </form>
+
+    <!-- Вывод сообщения о некорректности или использованности буквы -->
+
+    <p class="alert">
+        {% if message %}
+        <span>{{ message }}</span>
+        {% endif %}
+    </p>
+</div>
+
+
+<div>
+    <!-- Отрисовка картинок с состоянием висельника на основании уровня сложности и количества неудачных попыток -->
+
+    {% if is_hard %}
+    {% if fails==0 %}
+    <img src="static/stage00.JPG" alt="">
+    {% elif fails==1 %}
+    <img src="static/stage01.JPG" alt="">
+    {% else %}
+    <img src="static/stage{{ fails-2 }}.JPG" alt="">
+    {% endif %}
+    {% else %}
+    <img src="static/stage{{ fails }}.JPG" alt="">
+    {% endif %}
+</div>
+
+{% endblock content %}

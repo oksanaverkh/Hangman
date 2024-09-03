@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Сообщение игроку о выигрыше либо проигрыше -->
+
+<p class="text">{{ message }}</p>
+
+<!-- Картинка с висельником в случае проигрыша -->
+
+{% if tries==0 %}
+<div>
+    <img src="static/stage6.jpg" alt="">
+</div>
+{% endif %}
+
+<!-- Ссылки выбора продолжения игры либо выхода -->
+
+<div class="container m-3">
+    <a class="button_link" type="submit" href="{{ url_for('choose_length') }}">Еще раз?</a>
+    <a class="button_link_reject" type="submit" href="{{ url_for('finish') }}">Нет</a>
+</div>
+
+{% endblock content %}
