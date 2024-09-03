@@ -8,7 +8,7 @@ import random
 Инициация приложения, базы данных и csfr-защиты.
 '''
 app = Flask(__name__)
-app.config['SECRET_KEY'] = b'b5dcce18896741e207a586ddec41365f525811129583f8f9000b713ccbb180b5'
+app.config['SECRET_KEY'] = b'SECRET_KEY'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
 csrf = CSRFProtect(app)
 db.init_app(app)
